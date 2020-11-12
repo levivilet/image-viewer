@@ -1,0 +1,38 @@
+{
+  "name": "image-viewer",
+  "version": "1.0.0",
+  "description": "Image Viewer",
+  "main": "mainProcess.js",
+  "scripts": {
+    "watch": "nodemon --watch src --ext ts --exec \"esbuild --sourcemap --format=esm --bundle src/index.ts --outdir='dist'\"",
+    "build": "esbuild --sourcemap --format=esm --bundle src/index.ts --outdir='dist' && electron-forge make",
+    "dev": "electron mainProcess.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Levivilet",
+    "email": "levivlet@pm.me"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "asar": true
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "electron": "^10.1.5",
+    "esbuild": "^0.8.6",
+    "nodemon": "^2.0.6",
+    "typescript": "^4.0.5"
+  }
+}
